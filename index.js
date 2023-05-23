@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectToLocalhost from "./config/server.js";
+import connectToMongoDB from "./config/database.js";
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
@@ -15,5 +16,6 @@ app.use(morgan("dev"));
   app.get("/", (req, res) => {
     res.send("Welcome");
   });
+  connectToMongoDB();
   connectToLocalhost(app, PORT);
 })();
