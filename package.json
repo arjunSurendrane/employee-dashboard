@@ -1,0 +1,23 @@
+{
+  "name": "testing-mavens",
+  "version": "1.0.0",
+  "description": "dashboard for a company where it tracks the employee’s details, performance and salary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arjunSurendrane/employee-dashboard.git"
+  },
+  "author": "arjun e",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arjunSurendrane/employee-dashboard/issues"
+  },
+  "homepage": "https://github.com/arjunSurendrane/employee-dashboard#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
