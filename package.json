@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "dashboard for a company where it tracks the employee’s details, performance and salary",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,12 @@
   "homepage": "https://github.com/arjunSurendrane/employee-dashboard#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "nodemon": "^2.0.22"
   }
 }
