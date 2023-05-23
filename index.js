@@ -8,6 +8,8 @@ import adminRoute from "./routes/admin.js";
 import ownerRoute from "./routes/owner.js";
 import employeeRoute from "./routes/employee.js";
 import authRoute from "./routes/authentication.js";
+import globalErrorHandling from "./middleware/errorHandling.js";
+import AppError from "./utils/AppError.js";
 
 const app = express();
 dotenv.config();
@@ -22,6 +24,8 @@ app.use(morgan("dev"));
   app.use("/api/v1/admin", adminRoute);
   app.use("/api/v1/owner", ownerRoute);
   app.use("/api/v1/employee", employeeRoute);
+  app.use("*", (req, res, next) => next(new AppError("page not found", 404)));
+  globalErrorHandling(app);
   connectToMongoDB();
   connectToLocalhost(app, PORT);
 })();
