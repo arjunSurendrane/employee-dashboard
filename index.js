@@ -11,6 +11,7 @@ import employeeRoute from "./routes/employee.js";
 import authRoute from "./routes/authentication.js";
 import globalErrorHandling from "./middleware/errorHandling.js";
 import AppError from "./utils/AppError.js";
+import authorizeToken from "./middleware/authorization.js";
 
 const app = express();
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(morgan("dev"));
 
 (function () {
   app.use("/api/v1/auth", authRoute);
+  app.use(authorizeToken);
   app.use("/api/v1/admin", adminRoute);
   app.use("/api/v1/hr", hrRoute);
   app.use("/api/v1/employee", employeeRoute);
