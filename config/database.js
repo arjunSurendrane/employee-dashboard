@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 function connectToMongoDB() {
-  const db = "mongodb://localhost:27017/testingMavens";
+  const db = process.env.MONGODB_KEY;
   mongoose
     .connect(db)
     .then(() => {
