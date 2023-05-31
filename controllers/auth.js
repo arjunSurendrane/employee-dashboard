@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
-import AppError from "../utils/AppError";
 import asyncHandler from "express-async-handler";
-import Hrmodel from "../models/hrmodel";
-import Employee from "../models/employee";
+import AppError from "../utils/AppError.js";
+import Hrmodel from "../models/hrmodel.js";
+import Employee from "../models/employee.js";
 
 /**
  * Admin Login
@@ -63,7 +63,7 @@ export const hrSignup = asyncHandler(async (req, res, next) => {
     department,
   });
   // send success response
-  res.json(200).json({ status: "success" });
+  res.status(200).json({ status: "success" });
 });
 
 /**
@@ -92,13 +92,13 @@ export const employeeLogin = asyncHandler(async (req, res, next) => {
  */
 export const employeeSignup = asyncHandler(async (req, res, next) => {
   const { name, email, password, jobtitle, department, dateOfHire } = req.body;
-  if (!name || !email || !password || !jobtitle || !department || !dateOfHire) {
-    return next(new AppError("Please fill all fields"));
+  if (!name || !email || !password || !jobtitle || !department) {
+    return next(new AppError("Please fill all fields", 404));
   }
   //encrypt password
   const encryptPassword = await bcrypt.hash(password, 12);
   // create employee document
-  const employee = Employee.create({
+  const employee = await Employee.create({
     name,
     email,
     password: encryptPassword,
@@ -107,5 +107,5 @@ export const employeeSignup = asyncHandler(async (req, res, next) => {
     dateOfHire,
   });
   // send response
-  req.status(200).json({ status: "success" });
+  res.status(200).json({ status: "success" });
 });

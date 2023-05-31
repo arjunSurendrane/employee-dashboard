@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
-import AppError from "../utils/AppError";
 import asyncHandler from "express-async-handler";
-import Hrmodel from "../models/hrmodel";
-import Employee from "../models/employee";
+import AppError from "../utils/AppError.js";
+import Hrmodel from "../models/hrmodel.js";
+import Employee from "../models/employee.js";
 
 const checkWithDatabase = {
   admin: (id, password) => {

@@ -5,7 +5,7 @@ import {
   employeeSignup,
   hrLogin,
   hrSignup,
-} from "../controllers/auth";
+} from "../controllers/auth.js";
 const router = express.Router();
 
 /**
