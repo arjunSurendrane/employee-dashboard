@@ -12,6 +12,7 @@ import Jwt from "jsonwebtoken";
  * @param {Object} data
  */
 const successresponse = async (res, statusCode, data) => {
+  // creata jwt token
   const token = await Jwt.sign(
     { id: data._id, email: data.email, role: data.role },
     process.env.SECRET_KEY,
@@ -19,6 +20,7 @@ const successresponse = async (res, statusCode, data) => {
       expiresIn: process.env.EXP_JWT,
     }
   );
+  // send response
   res.status(statusCode).json({
     status: "success",
     data,
