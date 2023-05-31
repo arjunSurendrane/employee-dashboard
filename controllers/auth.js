@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import AppError from "../utils/AppError";
 import asyncHandler from "express-async-handler";
-import Hrmodel from "../models/hrmode";
+import Hrmodel from "../models/hrmodel";
 import Employee from "../models/employee";
 
 /**
