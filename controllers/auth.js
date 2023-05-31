@@ -25,6 +25,7 @@ const successresponse = async (res, statusCode, data) => {
     token,
   });
 };
+
 /**
  * Admin Login
  * POST /admin/login
@@ -84,7 +85,7 @@ export const hrSignup = asyncHandler(async (req, res, next) => {
     department,
   });
   // send success response
-  res.status(200).json({ status: "success" });
+  successresponse(res, 200, { _id: hr._id, email, role: "Hr" });
 });
 
 /**
@@ -128,5 +129,5 @@ export const employeeSignup = asyncHandler(async (req, res, next) => {
     dateOfHire,
   });
   // send response
-  res.status(200).json({ status: "success" });
+  successresponse(res, 200, { _id: employee._id, email, role: "Employee" });
 });
