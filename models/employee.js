@@ -9,6 +9,11 @@ const employeeSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  password: {
+    type: String,
+    select: false,
+    required: true,
+  },
   jobtitle: {
     type: String,
     required: [true, "user must have a jobtitle"],
