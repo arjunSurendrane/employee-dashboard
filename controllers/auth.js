@@ -3,7 +3,28 @@ import asyncHandler from "express-async-handler";
 import AppError from "../utils/AppError.js";
 import Hrmodel from "../models/hrmodel.js";
 import Employee from "../models/employee.js";
+import Jwt from "jsonwebtoken";
 
+/**
+ * Create and send token to client side
+ * @param {Object} res
+ * @param {Number} statusCode
+ * @param {Object} data
+ */
+const successresponse = async (res, statusCode, data) => {
+  const token = await Jwt.sign(
+    { id: data._id, email: data.email, role: data.role },
+    process.env.SECRET_KEY,
+    {
+      expiresIn: process.env.EXP_JWT,
+    }
+  );
+  res.status(statusCode).json({
+    status: "success",
+    data,
+    token,
+  });
+};
 /**
  * Admin Login
  * POST /admin/login
@@ -20,7 +41,7 @@ export const adminLogin = (req, res, next) => {
     return next(new AppError("Incorrect email id or password", 404));
   }
   // send response
-  res.status(200).json({ status: "success" });
+  successresponse(res, 200, { _id: "admin-007", email, role: "Admin" });
 };
 
 /**
@@ -40,7 +61,7 @@ export const hrLogin = asyncHandler(async (req, res, next) => {
   const comparePassword = await bcrypt.compare(password, hr.password);
   if (!comparePassword) return next(new AppError("incorrect password", 401));
   // send response
-  res.status(200).json({ status: "success" });
+  successresponse(res, 200, { _id: hr._id, email, role: "Hr" });
 });
 
 /**
@@ -83,7 +104,7 @@ export const employeeLogin = asyncHandler(async (req, res, next) => {
   const comparePassword = await bcrypt.compare(password, employee.password);
   if (!comparePassword) return next(new AppError("Incorrect password", 401));
   // send response
-  res.status(200).json({ status: "success" });
+  successresponse(res, 200, { _id: employee._id, email, role: "Employee" });
 });
 
 /**

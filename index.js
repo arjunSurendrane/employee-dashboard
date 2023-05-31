@@ -25,9 +25,9 @@ app.use(morgan("dev"));
 (function () {
   app.use("/api/v1/auth", authRoute);
   app.use(authorizeToken);
-  app.use("/api/v1/admin", adminRoute);
-  app.use("/api/v1/hr", hrRoute);
-  app.use("/api/v1/employee", employeeRoute);
+  app.use("/api/v1/employee", adminRoute);
+  app.use("/api/v1/salary", hrRoute);
+  app.use("/api/v1/task", employeeRoute);
   app.use("*", (req, res, next) => next(new AppError("page not found", 404)));
   globalErrorHandling(app);
   connectToMongoDB();
