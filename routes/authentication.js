@@ -1,6 +1,7 @@
 import express from "express";
 import {
   adminLogin,
+  deleteHr,
   employeeLogin,
   employeeSignup,
   hrLogin,
@@ -18,6 +19,7 @@ router.post("/admin/login", adminLogin);
  */
 router.post("/hr/login", hrLogin);
 router.post("/hr/signup", hrSignup);
+router.delete("/hr/:hrid", deleteHr);
 
 /**
  * Employee
