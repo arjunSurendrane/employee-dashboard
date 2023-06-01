@@ -91,16 +91,6 @@ export const hrSignup = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * Delete HR data
- * DELETE /hr/:hrid
- */
-export const deleteHr = asyncHandler(async (req, res, next) => {
-  const { hrid } = req.params;
-  const hr = await Hrmodel.findByIdAndRemove(hrid);
-  res.status(200).json({ status: "success" });
-});
-
-/**
  * Employee Login
  * POST /employee/login
  */
