@@ -9,7 +9,7 @@ const salaySchema = new mongoose.Schema({
       incriment: Number,
     },
   ],
-  employeeId: {
+  empid: {
     type: mongoose.Types.ObjectId,
     ref: "employee",
   },
