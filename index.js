@@ -27,6 +27,7 @@ app.use(morgan("dev"));
   app.use("/api/v1/auth", authRoute);
   // app.use(authorizeToken);
   app.use("/api/v1/employee", employeeRoute);
+  app.use(authorizeToken);
   app.use("/api/v1/hr", hrRoute);
   app.use("/api/v1/salary", salaryRoute);
   app.use("/api/v1/task", taskRoute);

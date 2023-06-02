@@ -5,13 +5,14 @@ import {
   listAllEmployeeDetails,
   updateEmployeeData,
 } from "../controllers/employee.js";
+import authorizeToken from "../middleware/authorization.js";
 const router = express.Router();
 
-router.get("/", listAllEmployeeDetails);
+router.get("/", authorizeToken, listAllEmployeeDetails);
 router
   .route("/:empid")
   .get(fetchEmployeeData)
-  .delete(deleteEmployeeData)
-  .patch(updateEmployeeData);
+  .delete(authorizeToken, deleteEmployeeData)
+  .patch(authorizeToken, updateEmployeeData);
 
 export default router;
