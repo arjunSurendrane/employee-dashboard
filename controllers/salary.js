@@ -37,7 +37,7 @@ export const salaryIncriment = asynHandler(async (req, res, next) => {
     "December",
   ];
 
-  d = new Date();
+  const d = new Date();
   const month = m_names[d.getMonth()];
   const { empid } = req.params;
   const salary = await Salary.findOneAndUpdate(
