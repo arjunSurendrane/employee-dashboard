@@ -11,7 +11,6 @@ import employeeRoute from "./routes/employee.js";
 import hrRoute from "./routes/hr.js";
 import authRoute from "./routes/authentication.js";
 import globalErrorHandling from "./middleware/errorHandling.js";
-import AppError from "./utils/AppError.js";
 import authorizeToken from "./middleware/authorization.js";
 
 const app = express();
@@ -23,7 +22,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-(function () {
+(function async() {
   app.use("/api/v1/auth", authRoute);
   // app.use(authorizeToken);
   app.use("/api/v1/employee", employeeRoute);
