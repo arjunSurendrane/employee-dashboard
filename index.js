@@ -11,6 +11,7 @@ import employeeRoute from "./routes/employee.js";
 import hrRoute from "./routes/hr.js";
 import authRoute from "./routes/authentication.js";
 import globalErrorHandling from "./middleware/errorHandling.js";
+import AppError from "./utils/AppError.js";
 import authorizeToken from "./middleware/authorization.js";
 
 const app = express();
