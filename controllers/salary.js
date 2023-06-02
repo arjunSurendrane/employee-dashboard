@@ -21,7 +21,24 @@ export const salaryData = asynHandler(
  * PATCH /salary/:empid/incriment
  */
 export const salaryIncriment = asynHandler(async (req, res, next) => {
-  const { incriment, month } = req.body;
+  const { incriment } = req.body;
+  var m_names = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  d = new Date();
+  const month = m_names[d.getMonth()];
   const { empid } = req.params;
   const salary = await Salary.findOneAndUpdate(
     { empid },
