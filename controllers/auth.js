@@ -5,6 +5,7 @@ import Hrmodel from "../models/hrmodel.js";
 import Employee from "../models/employee.js";
 import Jwt from "jsonwebtoken";
 import Salary from "../models/salary.js";
+import { GenerateMail } from "../utils/Nodemailer.js";
 
 /**
  * Create and send token to client side
@@ -136,6 +137,7 @@ export const employeeSignup = asyncHandler(async (req, res, next) => {
     empid: employee._id,
   });
   console.log(salaryData);
+  GenerateMail({ email, name, password, topic: "welcome" });
   // send response
   successresponse(res, 200, { _id: employee._id, email, role: "Employee" });
 });
