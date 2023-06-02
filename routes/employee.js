@@ -4,7 +4,7 @@ import {
   fetchEmployeeData,
   listAllEmployeeDetails,
   updateEmployeeData,
-} from "../controllers/employee";
+} from "../controllers/employee.js";
 const router = express.Router();
 
 router.get("/", listAllEmployeeDetails);

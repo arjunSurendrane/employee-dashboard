@@ -1,7 +1,6 @@
 import express from "express";
 import {
   adminLogin,
-  deleteHr,
   employeeLogin,
   employeeSignup,
   hrLogin,

@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import Hrmodel from "../models/hrmodel";
+import Hrmodel from "../models/hrmodel.js";
 
 /**
  * List All HR data

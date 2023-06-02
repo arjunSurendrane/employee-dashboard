@@ -4,10 +4,10 @@ import {
   addTask,
   deleteTask,
   updateTask,
-} from "../controllers/task";
+} from "../controllers/task.js";
 const router = express.Router();
 
-router.post("/", addTask);
+router.post("/:empid", addTask);
 router.route("/:taskid").patch(updateTask).delete(deleteTask);
 router.patch("/:taskid/rating", addRating);
 

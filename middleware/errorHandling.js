@@ -1,5 +1,6 @@
 function globalErrorHandling(app) {
   app.use((err, req, res, next) => {
+    console.log(err);
     let { status, statusCode, content, code } = err;
     if (status == "fail" || code == 11000) {
       statusCode = statusCode || 404;

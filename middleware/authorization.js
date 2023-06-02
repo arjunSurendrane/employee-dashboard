@@ -9,7 +9,7 @@ const checkWithDatabase = {
     return id == process.env.ADMIN_MAIL && password == process.env.ADMIN_PASS;
   },
   hr: async (id) => await Hrmodel.findById(id),
-  employee: async (id) => await Employee.findById(id),
+  Employee: async (id) => await Employee.findById(id),
 };
 
 /**
@@ -29,7 +29,8 @@ const authorizeToken = asyncHandler(async (req, res, next) => {
   const decode = await jwt.verify(token, process.env.SECRET_KEY);
   if (!decode) return next(new AppError("Unauthorized user", 401));
   // compare id with database
-  const credentials = await checkWithDatabase(decode.role);
+  console.log(decode);
+  const credentials = await checkWithDatabase[decode.role](decode.role);
   if (!credentials) return next(new AppError("Unauthorized user", 401));
   // store credential detail is reques
   req.credentials = credentials;

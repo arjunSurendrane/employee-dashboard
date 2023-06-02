@@ -1,7 +1,7 @@
 import asynHandler from "express-async-handler";
-import Employee from "../models/employee";
-import { salaryData } from "./salary";
-import { fetchTaskData } from "./task";
+import Employee from "../models/employee.js";
+import { salaryData } from "./salary.js";
+import { fetchTaskData } from "./task.js";
 
 /**
  * Fetch Employees Details

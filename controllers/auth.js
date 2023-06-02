@@ -4,6 +4,7 @@ import AppError from "../utils/AppError.js";
 import Hrmodel from "../models/hrmodel.js";
 import Employee from "../models/employee.js";
 import Jwt from "jsonwebtoken";
+import Salary from "../models/salary.js";
 
 /**
  * Create and send token to client side
@@ -115,8 +116,9 @@ export const employeeLogin = asyncHandler(async (req, res, next) => {
  * POST /employee/signup
  */
 export const employeeSignup = asyncHandler(async (req, res, next) => {
-  const { name, email, password, jobtitle, department, dateOfHire } = req.body;
-  if (!name || !email || !password || !jobtitle || !department) {
+  const { name, email, password, jobtitle, department, salary } = req.body;
+  console.log(req.body);
+  if (!name || !email || !password || !jobtitle || !department || !salary) {
     return next(new AppError("Please fill all fields", 404));
   }
   //encrypt password
@@ -128,8 +130,12 @@ export const employeeSignup = asyncHandler(async (req, res, next) => {
     password: encryptPassword,
     jobtitle,
     department,
-    dateOfHire,
   });
+  const salaryData = await Salary.create({
+    currentSalary: salary,
+    empid: employee._id,
+  });
+  console.log(salaryData);
   // send response
   successresponse(res, 200, { _id: employee._id, email, role: "Employee" });
 });

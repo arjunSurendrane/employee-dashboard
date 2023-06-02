@@ -3,12 +3,8 @@ import mongoose, { Mongoose } from "mongoose";
 const salaySchema = new mongoose.Schema({
   currentSalary: Number,
   bonus: Number,
-  history: [
-    {
-      month: String,
-      incriment: Number,
-    },
-  ],
+  incriment: Number,
+  month: String,
   empid: {
     type: mongoose.Types.ObjectId,
     ref: "employee",

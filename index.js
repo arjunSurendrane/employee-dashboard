@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 
 (function () {
   app.use("/api/v1/auth", authRoute);
-  app.use(authorizeToken);
+  // app.use(authorizeToken);
   app.use("/api/v1/employee", employeeRoute);
   app.use("/api/v1/hr", hrRoute);
   app.use("/api/v1/salary", salaryRoute);
